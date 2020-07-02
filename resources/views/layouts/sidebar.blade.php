@@ -1,5 +1,6 @@
 <div class="col-md-4">
     <aside class="right-sidebar">
+        <!--
         <div class="search-widget">
             <div class="input-group">
               <input type="text" class="form-control input-lg" placeholder="Search for...">
@@ -8,9 +9,9 @@
                     <i class="fa fa-search"></i>
                 </button>
               </span>
-            </div><!-- /input-group -->
+            </div>
         </div>
-
+        -->
         <div class="widget">
             <div class="widget-heading">
                 <h4>Categories</h4>
@@ -89,7 +90,7 @@
                 </ul>
             </div>
         </div>
-
+        <!--    
         <div class="widget">
             <div class="widget-heading">
                 <h4>Tags</h4>
@@ -107,5 +108,6 @@
                 </ul>
             </div>
         </div>
+        -->
     </aside>
 </div>
