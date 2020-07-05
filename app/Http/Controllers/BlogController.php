@@ -28,27 +28,38 @@ class BlogController extends Controller
         //view('blog.index', compact('posts'))->render();
         //dd(\DB::getQueryLog());
     }
-
+    /*
     public function show($id)
     {
         $post = Post::published()->findOrFail($id);
         return view('blog.show', compact('post'));
     }
+    */
+    public function show(Post $post)
+    {       
+        //$post = Post::published()->findOrFail($id);
+        return view('blog.show', compact('post'));
+    }
 
-    public function category($id) 
+
+    public function category(Category $category) 
     {
+        $categoryName = $category->title;
+        
         $categories = Category::with(['posts' => function($query) {
             //$query->where('published_at', "<=", Carbon::now());
             $query->published();
         }])->orderBy('title', 'asc')->get();
         
         //\DB::enableQueryLog();
-        $posts = Post::with('author')
-                    ->latestFirst()
-                    ->published()
-                    ->where('category_id', $id)
-                    ->simplePaginate($this->limit);
-        return view('blog.index', compact('posts', 'categories'));
+     
+        $posts = $category->posts()
+                          ->with('author')
+                          ->latestFirst()
+                          ->published()
+                          ->simplePaginate($this->limit);
+
+        return view('blog.index', compact('posts', 'categories', 'categoryName'));
         //view('blog.index', compact('posts', 'categories'))->render();
         //dd(\DB::getQueryLog());
     }
